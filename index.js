@@ -40,7 +40,31 @@ function toggleColor(element) {
   }
 }
 
+const header = document.querySelector('#header')
+header.addEventListener('click', e => {
+  toggleColor(header)
+})
+
 
 /***** Deliverable 2 *****/
+document.querySelector('#new-player-form').addEventListener('submit', e => {
+  e.preventDefault()
+  const player = {
+    number: e.target['number'].value,
+    name: e.target['name'].value,
+    nickname: e.target['nickname'].value,
+    photo: e.target['photo'].value,
+    likes: 0
+  }
+  renderPlayer(player)
+})
+
 
 /***** Deliverable 3 *****/
+document.querySelector('.player-container').addEventListener('click', e => {
+  e.preventDefault()
+  if (e.target.nodeName == 'BUTTON') {
+    const likeNum = parseInt(e.target.previousElementSibling.innerText.split(' ')[0])
+    e.target.previousElementSibling.innerText = `${likeNum + 1} likes`
+  }
+})
